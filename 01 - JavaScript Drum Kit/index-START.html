@@ -68,7 +68,7 @@
       if(!audio)return;
       element.classList.add('playing')
       audio.currentTime = 0;
-      audio.play()
+      audio.play();
       
       const keys = document.querySelectorAll(`.key`)
       keys.forEach(key => key.addEventListener('transitionend', checkIfPlaying))   
