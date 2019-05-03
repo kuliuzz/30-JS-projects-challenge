@@ -21,10 +21,21 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    :root{
+      --blur:100px;
+      --spacing:10px;
+      --base:#ffc600;
+    } 
 
-    /*
-      misc styles, nothing to do with CSS variables
-    */
+    img{
+      filter: blur(var(--blur));
+      padding: var(--spacing);
+      background-color: var(--base);
+    } 
+
+    .hl{
+      color:var(--base);
+    }
 
     body {
       text-align: center;
@@ -45,6 +56,12 @@
   </style>
 
   <script>
+    let nodeList = document.querySelectorAll('.controls input')
+    function updateCSS(){
+      const suffix = this.dataset.sizing || '';
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    }
+    nodeList.forEach(item => item.addEventListener('change', updateCSS));
   </script>
 
 </body>
